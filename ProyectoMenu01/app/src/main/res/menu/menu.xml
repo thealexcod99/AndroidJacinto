@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/identificador1"
+        android:title="Texto de la opcion 1"
+        android:icon="@android:drawable/ic_menu_preferences"></item>
+    <item
+        android:id="@+id/identificador2"
+        android:title="Texto de la opcion 2"
+        android:icon="@android:drawable/ic_menu_preferences">
+        <menu>
+            <item
+                android:id="@+id/identificador3"
+                android:title="Texto de la opcion 3"
+                android:icon="@android:drawable/ic_menu_preferences"></item>
+            <item
+                android:id="@+id/identificador4"
+                android:title="Texto de la opcion 4"
+                android:icon="@android:drawable/ic_menu_preferences"></item>
+        </menu>
+
+    </item>
+
+
+</menu>
