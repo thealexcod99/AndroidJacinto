@@ -1,4 +1,4 @@
-package com.aalvarez.proyectof10;
+package com.aalvarez.proyectomagia;
 
 import android.os.Bundle;
 

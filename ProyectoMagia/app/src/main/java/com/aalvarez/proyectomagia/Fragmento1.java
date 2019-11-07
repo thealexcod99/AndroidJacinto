@@ -1,7 +1,6 @@
-package com.aalvarez.proyectof10;
+package com.aalvarez.proyectomagia;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
-
-import javax.security.auth.callback.Callback;
 
 public class Fragmento1 extends ListFragment {
 
@@ -25,6 +22,8 @@ public class Fragmento1 extends ListFragment {
             public void onEntrada(Object entrada, View view) {
                 TextView texto_superior_entrada = (TextView) view.findViewById(R.id.textotitulo);
                 texto_superior_entrada.setText(((Contenido.Lista_entrada) entrada).textoEncima);
+                TextView texto_inferior_entrada = (TextView) view.findViewById(R.id.textosubtitulo);
+                texto_inferior_entrada.setText(((Contenido.Lista_entrada) entrada).textoLista);
                 ImageView imagen_entrada = (ImageView) view.findViewById(R.id.imagenlista);
                 imagen_entrada.setImageResource(((Contenido.Lista_entrada) entrada).idImagen);
             }
