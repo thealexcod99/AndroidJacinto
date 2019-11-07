@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class Contenido {
 
-    public static ArrayList<Lista_entrada> ENT_LISTA = new ArrayList<Lista_entrada>();
-    public static Map<String,Lista_entrada> ENT_LISTA_HASHMAP = new HashMap<String, Lista_entrada>();
+    public static ArrayList<Lista_entrada> ENT_LISTA = new ArrayList<>();
+    public static Map<String,Lista_entrada> ENT_LISTA_HASHMAP = new HashMap<>();
 
     public static class Lista_entrada {
         public String id;
