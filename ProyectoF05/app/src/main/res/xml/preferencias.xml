@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="PREFERENCIAS EN LINEA">
+        <CheckBoxPreference
+            android:key="valor1"
+            android:title="PREFERENCIAS CHECKBOX"
+            android:summary="ESTO NO ES UN CHECKBOX" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="PREFERENCIAS EN CUADRO DE DIALOGO">
+        <EditTextPreference
+            android:key="valor2"
+            android:title="CAJA DE TEXTO"
+            android:summary="UN EJEMPLO DE CUADRO DE DIALOGO"
+            android:dialogTitle="TECLEA TU EQUIPO FAVORITO"/>
+        <ListPreference
+            android:key="valor3"
+            android:title="PREFERENCIAS EN LISTA"
+            android:summary="UN EJEMPLOR DE LISTADO"
+            android:entries="@array/ciclo"
+            android:entryValues="@array/ciclo"
+            android:dialogTitle="¿CUÁL ES TU CICLO?"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="PREFERENCIAS EN OTRA PANTALLA">
+        <PreferenceScreen
+            android:key="valor4"
+            android:title="PREFERENCIAS DE PANTALLA"
+            android:summary="MUESTRA OPCIONES EN OTRA PANTALLA">
+            <CheckBoxPreference
+                android:key="valor5"
+                android:title="PREFERENCIAS ALTERNATIVAS"
+                android:summary="PODEMOS RECUPERAR LA SELECCION"/>
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:title="PREFERENCIAS DE APLICACION"
+            android:summary="LANZAMOS UNA NUEVA ACTIVITY CON UN INTENT">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://www.iesvirgendelcarmen.com/moodle/"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="PREFERENCIAS DE ATRIBUTOS">
+        <CheckBoxPreference
+            android:key="valor6"
+            android:title="CHECKBOX PADRE"
+            android:summary="SI LO PULSAS APARECE EL HIJO"/>
+        <CheckBoxPreference
+            android:key="valor7"
+            android:dependency="valor6"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:title="CHECKBOX HIJO"
+            android:summary="PUEDEN ANIDARSE CHECKBOX"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
