@@ -58,10 +58,10 @@ public class Material04 extends AppCompatActivity {
                         View sbView = snackbar1.getView();
                         TextView texto = (TextView) sbView.findViewById(R.id.snackbar_text);
                         texto.setTextColor(Color.YELLOW);
-                        snackbar1.setActionTextColor(Color.CYAN);
                         snackbar1.show();
                     }
                 });
+        snackbar.setActionTextColor(Color.CYAN);
         snackbar.show();
     }
 }
