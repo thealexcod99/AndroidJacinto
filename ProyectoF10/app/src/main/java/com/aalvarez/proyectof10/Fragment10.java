@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class Fragment10 extends FragmentActivity implements Fragmento1.Callbacks {
@@ -22,6 +23,7 @@ public class Fragment10 extends FragmentActivity implements Fragmento1.Callbacks
     @Override
     public void onEntradaSeleccionada(String id) {
         //Toast.makeText(getBaseContext(), "TOCADO EL " + id, Toast.LENGTH_SHORT).show();
+        Log.i("TABLET", "dosFragmentos");
         if (dosFragmentos) {
             Bundle arguments = new Bundle();
             arguments.putString(Fragmento3.ARG_ID_ENTRADA_SELECCIONADA, id);

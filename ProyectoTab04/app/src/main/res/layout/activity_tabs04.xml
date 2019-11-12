@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.viewpager.widget.ViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    tools:ignore="MissingDefaultResource">
+    <androidx.viewpager.widget.PagerTitleStrip
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:background="#33B5E5"
+        android:layout_gravity="top"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+    </androidx.viewpager.widget.PagerTitleStrip>
+</androidx.viewpager.widget.ViewPager>
