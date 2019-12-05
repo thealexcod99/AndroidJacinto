@@ -20,13 +20,13 @@ public class Actividad1Main extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lanzarActivity();
-            }
+startActivity();            }
         });
     }
 
     public static void lanzarActivity(Activity activity) {
         Intent intent = new Intent(activity, Actividad1.class);
+
 
     }
 }
