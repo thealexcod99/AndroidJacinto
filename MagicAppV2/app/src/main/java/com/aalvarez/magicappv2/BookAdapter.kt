@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
 class BookAdapter(private val books: List<Book>, val itemClickListener: OnItemClickListener) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
@@ -33,7 +34,12 @@ class BookAdapter(private val books: List<Book>, val itemClickListener: OnItemCl
 
         fun bind(book: Book, clickListener: OnItemClickListener) {
             tituloTextView.text = book.titulo
-            precioTextView.text = book.precio
+            precioTextView.text = book.descripcion
+            Glide
+                .with(itemView.context)
+                .load(book.portada)
+                .centerInside()
+                .into(photoImageView)
 
             itemView.setOnClickListener {
                 clickListener.onClicked(book)

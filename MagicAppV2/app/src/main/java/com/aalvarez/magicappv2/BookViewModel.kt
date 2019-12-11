@@ -22,81 +22,55 @@ class BookViewModel : ViewModel() {
     }
 
     fun mock() {
-
         val b1 = Book(
-            "Platero y Yo",
-            "https://images-na.ssl-images-amazon.com/images/I/51Np1Xcnh-L._SX330_BO1,204,203,200_.jpg",
-            "1234567891234",
-            "Juan Ramón Jimenez",
-            "Ebook",
-            "19/02/2005",
-            "Va de un burro",
-            "Anaya",
-            "120",
-            "20")
+            "MAGIA BLANCA",
+                "https://i.ytimg.com/vi/fqgstvoUxOc/maxresdefault.jpg",
+                "Magia buena"
+            )
 
         val b2 = Book(
-            "Platero y Yo",
-            "https://images-na.ssl-images-amazon.com/images/I/51Np1Xcnh-L._SX330_BO1,204,203,200_.jpg",
-            "1234567891234",
-            "Juan Ramón Jimenez",
-            "Ebook",
-            "19/02/2005",
-            "Va de un burro",
-            "Anaya",
-            "120",
-            "20")
+            "MAGIA NEGRA",
+                "https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2018/10/22/808256.jpg",
+                "Magia maligna"
+            )
 
         val b3 = Book(
-            "Platero y Yo",
-            "https://images-na.ssl-images-amazon.com/images/I/51Np1Xcnh-L._SX330_BO1,204,203,200_.jpg",
-            "1234567891234",
-            "Juan Ramón Jimenez",
-            "Ebook",
-            "19/02/2005",
-            "Va de un burro",
-            "Anaya",
-            "120",
-            "20")
+            "MAGIA ROJA",
+            "https://images-na.ssl-images-amazon.com/images/I/51ih7-8g1uL._SX466_.jpg",
+                "Magia del sexo"
+            )
 
         val b4 = Book(
-            "Platero y Yo",
-            "https://images-na.ssl-images-amazon.com/images/I/51Np1Xcnh-L._SX330_BO1,204,203,200_.jpg",
-            "1234567891234",
-            "Juan Ramón Jimenez",
-            "Ebook",
-            "19/02/2005",
-            "Va de un burro",
-            "Anaya",
-            "120",
-            "20")
+            "MAGIA VERDE",
+                "https://i.ytimg.com/vi/yC6lHNLmsLg/hqdefault.jpg",
+                "Magia de la naturaleza"
+            )
 
         val b5 = Book(
-            "Platero y Yo",
-            "https://images-na.ssl-images-amazon.com/images/I/51Np1Xcnh-L._SX330_BO1,204,203,200_.jpg",
-            "1234567891234",
-            "Juan Ramón Jimenez",
-            "Ebook",
-            "19/02/2005",
-            "Va de un burro",
-            "Anaya",
-            "120",
-            "20")
+            "MAGIA GRIS",
+                "https://1.bp.blogspot.com/-ZqaDDCkQkQo/VQTcNRcRzTI/AAAAAAAAAVw/CAvLDBScNYc/s1600/merlin_mago.jpg",
+                "Magia neutra"
+            )
 
         val b6 = Book(
-            "Platero y Yo",
-            "https://images-na.ssl-images-amazon.com/images/I/51Np1Xcnh-L._SX330_BO1,204,203,200_.jpg",
-            "1234567891234",
-            "Juan Ramón Jimenez",
-            "Ebook",
-            "19/02/2005",
-            "Va de un burro",
-            "Anaya",
-            "120",
-            "20")
+            "MAGIA AZUL",
+                "https://vignette.wikia.nocookie.net/yugiohenespanol/images/d/de/Foto_mago_azul_h%C3%A1bil.jpg/revision/latest?cb=20141119181402&path-prefix=es",
+                "Magia del agua"
+            )
 
+        val b7 = Book(
+            "MAGIA ROSA",
+                "https://lamonomagazine.com/wp-content/uploads/2018/02/Al-Mefer-1.jpg",
+                "Magia del amor"
+            )
 
-        books = mutableListOf(b1,b2,b3,b4,b5,b6)
+        val b8 = Book(
+            "ILUSIONISMO",
+            "https://img.freepik.com/vector-gratis/espectaculo-magia-fondo_1284-13012.jpg?size=338&ext=jpg",
+            "Magia falsa"
+            )
+
+        books = mutableListOf(b1,b2,b3,b4,b5,b6,b7,b8)
 
         /*for (i in 0..150) {
             books.add(books[Random.nextInt(5)])

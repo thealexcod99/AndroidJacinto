@@ -9,12 +9,5 @@ package com.aalvarez.magicappv2
 data class Book(
     val titulo: String,
     val portada: String,
-    val isbn: String,
-    val autores: String,
-    val encuadernacion: String,
-    val fec_publicacion: String,
-    val sinopsis: String,
-    val editorial: String,
-    val num_paginas: String,
-    val precio: String
+    val descripcion: String
 )//: Parcelable
