@@ -37,7 +37,7 @@ public class Sensores08 extends AppCompatActivity implements SensorEventListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensores08);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        acelerometro = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        acelerometro = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         mDibujo = new ShapeDrawable();
         mainLayout = findViewById(R.id.lay);
         miVista = new MiVistaPersonal(this);
