@@ -2,6 +2,7 @@ package com.example.proyectosensores08;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -29,7 +30,7 @@ public class Sensores08 extends AppCompatActivity implements SensorEventListener
     private SensorManager sensorManager;
     private Sensor acelerometro;
     private ShapeDrawable mDibujo;
-    private LinearLayout mainLayout;
+    private ConstraintLayout mainLayout;
     private View miVista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class Sensores08 extends AppCompatActivity implements SensorEventListener
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(this, acelerometro, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, acelerometro, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class Sensores08 extends AppCompatActivity implements SensorEventListener
     @Override
     public void onSensorChanged(SensorEvent event) {
         x = centrox + (int) Math.pow(event.values[1], 2);
-        y = centrox + (int) Math.pow(event.values[2], 2);
+        y = centroy + (int) Math.pow(event.values[2], 2);
     }
 
     @Override
@@ -87,6 +88,7 @@ public class Sensores08 extends AppCompatActivity implements SensorEventListener
             Paint pincel = new Paint();
             pincel.setColor(Color.BLUE);
             canvas.drawOval(oval, pincel);
+            invalidate();
         }
     }
 }
