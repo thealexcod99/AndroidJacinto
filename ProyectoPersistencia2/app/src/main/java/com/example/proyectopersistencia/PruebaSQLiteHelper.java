@@ -23,7 +23,7 @@ public class PruebaSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE prueba");
+        db.execSQL("DROP TABLE IF EXISTS prueba");
         db.execSQL(createTable);
     }
 }

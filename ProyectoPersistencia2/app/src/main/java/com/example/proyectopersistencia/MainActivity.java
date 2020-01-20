@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         texto2 = findViewById(R.id.editText2);
         listView = findViewById(R.id.listView);
 
-        List<String> datos = new ArrayList<>();
+        /*List<String> datos = new ArrayList<>();
         datos.add("Dato1");
         datos.add("Dato2");
         datos.add("Dato3");
@@ -50,19 +50,19 @@ public class MainActivity extends AppCompatActivity {
         datos.add("Dato5");
 
         ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, datos);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
-        /*PruebaSQLiteHelper pruebaBBDD = new PruebaSQLiteHelper(this, "DBPrueba", null, 1);
-        final SQLiteDatabase db = pruebaBBDD.getWritableDatabase();*/
+        PruebaSQLiteHelper pruebaBBDD = new PruebaSQLiteHelper(this, "DBPrueba", null, 1);
+        final SQLiteDatabase db = pruebaBBDD.getWritableDatabase();
 
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),"Boton Crear",Toast.LENGTH_LONG);
-                /*ContentValues nuevoRegistro = new ContentValues();
+                ContentValues nuevoRegistro = new ContentValues();
                 nuevoRegistro.put("texto1", texto1.getText().toString());
                 nuevoRegistro.put("texto2", texto2.getText().toString());
-                db.insert("prueba", null, nuevoRegistro);*/
+                db.insert("prueba", null, nuevoRegistro);
             }
         });
 
