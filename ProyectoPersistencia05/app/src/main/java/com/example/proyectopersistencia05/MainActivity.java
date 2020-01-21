@@ -2,6 +2,9 @@ package com.example.proyectopersistencia05;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,8 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.stream.Collectors;
 
@@ -30,63 +35,37 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         textView = findViewById(R.id.textView);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*final Thread thread = new Thread(new Runnable() {
+                Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             URL url = new URL("https://www.google.com/humans.txt");
                             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                            Integer estado = urlConnection.getResponseCode();
-                            Toast.makeText(getApplicationContext(), estado.toString(), Toast.LENGTH_LONG).show();
-                            *//*InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
-                            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                            Log.e("FICHEROS", "dentro del try");
 
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                texto = bufferedReader.lines().collect(Collectors.joining());
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                            String respuesta = "";
 
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        textView.setText(texto);
-                                    }
-                                });
-                            }*//*
-                            urlConnection.disconnect();
+                            while (true) {
+                                respuesta += reader.readLine();
+                                if (respuesta.contains("null")) {
+                                    respuesta = respuesta.replace("null", "");
+                                    break;
+                                }
+                            }
+                            textView.setText(respuesta);
 
-                        } catch (Exception ex) {
-                            Log.e("FICHEROS", "Error al leer datos en la red");
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     }
-                });*/
-
-                try {
-                    URL url = new URL("https://www.google.com/humans.txt");
-                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                    urlConnection.connect();
-                    Integer estado = urlConnection.getResponseCode();
-                    Toast.makeText(getApplicationContext(), estado.toString(), Toast.LENGTH_LONG).show();
-                            /*InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
-                            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                texto = bufferedReader.lines().collect(Collectors.joining());
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        textView.setText(texto);
-                                    }
-                                });
-                            }*/
-                    urlConnection.disconnect();
-
-                } catch (Exception ex) {
-                    Log.e("FICHEROS", "Error al leer datos en la red");
-                }
-
+                });
             }
         });
 

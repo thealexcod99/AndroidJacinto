@@ -6,7 +6,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,23 +45,19 @@ public class MainActivity extends AppCompatActivity {
         texto2 = findViewById(R.id.editText2);
         listView = findViewById(R.id.listView);
 
-        /*List<String> datos = new ArrayList<>();
-        datos.add("Dato1");
-        datos.add("Dato2");
-        datos.add("Dato3");
-        datos.add("Dato4");
-        datos.add("Dato5");
+        final List<String> datos = new ArrayList<>();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, datos);
-        listView.setAdapter(adapter);*/
+        final ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, datos);
+        listView.setAdapter(adapter);
 
         PruebaSQLiteHelper pruebaBBDD = new PruebaSQLiteHelper(this, "DBPrueba", null, 1);
         final SQLiteDatabase db = pruebaBBDD.getWritableDatabase();
 
+
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"Boton Crear",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),"Boton Crear",Toast.LENGTH_LONG).show();
                 ContentValues nuevoRegistro = new ContentValues();
                 nuevoRegistro.put("texto1", texto1.getText().toString());
                 nuevoRegistro.put("texto2", texto2.getText().toString());
@@ -69,32 +68,47 @@ public class MainActivity extends AppCompatActivity {
         btnLeer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"Boton Leer",Toast.LENGTH_LONG);
-                /*String[] args = new String[] {"5"};
-                * Cursor miCursor = db.rawQuery("SELECT codigo, texto1, texto2 FROM prueba WHERE codigo=?", );
-                * txtResultado.setText
-                */
+                Toast.makeText(getApplicationContext(),"Boton Leer",Toast.LENGTH_LONG).show();
+                Cursor cursor = db.query("prueba", null, null, null, null, null, null);
+                datos.clear();
+                if(cursor.moveToFirst()){
+
+                    do{
+                        int id = cursor.getInt(0);
+                        String data1 = cursor.getString(1);
+                        String data2 = cursor.getString(2);
+                        datos.add(id + ". " + data1 + " " + data2);
+
+
+                    }while (cursor.moveToNext());
+                    cursor.close();
+                }
+                adapter.notifyDataSetChanged();
             }
         });
 
         btnBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"Boton Borrar",Toast.LENGTH_LONG);
-                /*db.delete("prueba", "codigo=" + codigo, null);*/
+                Toast.makeText(getApplicationContext(),"Boton Borrar",Toast.LENGTH_LONG).show();
+
+                db.delete("prueba", "codigo=" + codigo, null);
             }
         });
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"Boton Actualizar",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),"Boton Actualizar",Toast.LENGTH_LONG).show();
+                ContentValues actualizarRegistro = new ContentValues();
+                actualizarRegistro.put("texto1", texto1.getText().toString());
+                actualizarRegistro.put("texto2", texto2.getText().toString());
+                db.update("prueba", actualizarRegistro, "codigo=" + codigo, null);
 
             }
         });
 
 
-
-
     }
+
 }
