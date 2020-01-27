@@ -1,22 +1,17 @@
 package com.example.proyectopersistencia;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText texto2;
     private int codigo;
     private ListView listView;
-
+    private List<String> datos;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +41,13 @@ public class MainActivity extends AppCompatActivity {
         texto2 = findViewById(R.id.editText2);
         listView = findViewById(R.id.listView);
 
-        final List<String> datos = new ArrayList<>();
+        datos = new ArrayList<>();
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, datos);
+        adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, datos);
         listView.setAdapter(adapter);
 
         PruebaSQLiteHelper pruebaBBDD = new PruebaSQLiteHelper(this, "DBPrueba", null, 1);
         final SQLiteDatabase db = pruebaBBDD.getWritableDatabase();
-
 
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Boton Borrar",Toast.LENGTH_LONG).show();
-
                 db.delete("prueba", "codigo=" + codigo, null);
             }
         });
@@ -108,7 +102,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "Posicion = " +position, Toast.LENGTH_LONG);
+                seleccionarCodigo(position);
+            }
+        });
     }
 
+    private void seleccionarCodigo(int posicion) {
+        String[] cadenaSeparada = datos.get(posicion).split(".");
+        if (cadenaSeparada.length != 0)
+            codigo = Integer.parseInt(cadenaSeparada[0]);
+    }
 }
