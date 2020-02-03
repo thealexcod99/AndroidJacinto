@@ -18,6 +18,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCrear;
     private Button btnBorrar;
     private GridView gridView;
+    private List<String> idList;
+    private int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnCrear = findViewById(R.id.btnCrear);
         btnBorrar = findViewById(R.id.btnBorrar);
         gridView = findViewById(R.id.gridView);
+
+        idList = new ArrayList<>();
 
 
         String[] projection = new String[] {
@@ -57,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
                 PruebaProviderMetaData.PruebaTablaMetaData.DEFAULT_SORT_ORDER);
 
 
+
+        if (cur.moveToFirst()) {
+            Log.d("ColName", cur.getColumnName(0));
+            do {
+                id = cur.getInt(0);
+                Log.d("ID", "" + id);
+                idList.add("" + id);
+            } while (cur.moveToNext());
+        }
+
         final CursorAdapter cursorAdapter = new CursorAdapter(this, cur) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -68,15 +87,13 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView textViewName = view.findViewById(R.id.textViewName);
                 TextView textViewAnio = view.findViewById(R.id.textViewAnio);
-                TextView textViewId = view.findViewById(R.id.textViewId);
 
                 int colName = cursor.getColumnIndex(PruebaProviderMetaData.PruebaTablaMetaData.NAME);
                 int colAnio = cursor.getColumnIndex(PruebaProviderMetaData.PruebaTablaMetaData.ANIO);
-                int colId = cursor.getColumnIndex(PruebaProviderMetaData.PruebaTablaMetaData.ID);
 
                 textViewName.setText(cursor.getString(colName));
                 textViewAnio.setText(cursor.getString(colAnio));
-                textViewId.setText(cursor.getInt(colId));
+
             }
 
 
@@ -87,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                id = Integer.parseInt(idList.get(position));
+                Toast.makeText(getApplicationContext(), "" + id, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -109,7 +127,14 @@ public class MainActivity extends AppCompatActivity {
                         null,       //Condición de la query
                         null,       //Argumentos variables de la query
                         PruebaProviderMetaData.PruebaTablaMetaData.DEFAULT_SORT_ORDER);
-
+                idList.clear();
+                if (curlista.moveToFirst()) {
+                    do {
+                        id = curlista.getInt(0);
+                        Log.d("ID", "" + id);
+                        idList.add("" + id);
+                    } while (curlista.moveToNext());
+                }
                 cursorAdapter.changeCursor(curlista);
 
             }
@@ -138,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 ContentResolver cr = getContentResolver();
 
                 cr.delete(PruebaProviderMetaData.PruebaTablaMetaData.CONTENT_URI,
-                        "id= " + "ID DEL DATO", null);
+                        "_id=" + id, null);
             }
         });
 

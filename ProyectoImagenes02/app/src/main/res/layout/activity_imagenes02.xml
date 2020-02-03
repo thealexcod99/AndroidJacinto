@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#9d8364"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="ANIMACIÓN DE FOTOGRAMAS"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/texto"
+        />
+    <Button android:text="INICIAR"
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></Button>
+    <Button android:text="DETENER"
+        android:id="@+id/button2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></Button>
+    <ImageView android:layout_height="fill_parent"
+        android:layout_margin="20dp"
+        android:layout_width="fill_parent"
+        android:scaleType="fitCenter"
+        android:id="@+id/imagen">
+    </ImageView>
+</LinearLayout>
