@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REPRODUCIENDO VIDEO"
+        android:gravity="center" />
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FICHERO DE VIDEO"
+        android:gravity="center"/>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />-->
+    
+    <VideoView
+        android:layout_margin="5dp"
+        android:id="@+id/videoView"
+        android:layout_width="wrap_content"
+        android:layout_height="540dp"/>
+
+    <!--<view
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CLASE VIDEOVIEW"
+        android:gravity="center"/>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />-->
+
+
+
+</LinearLayout>
