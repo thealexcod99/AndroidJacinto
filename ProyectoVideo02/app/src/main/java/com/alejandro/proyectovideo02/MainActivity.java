@@ -37,12 +37,15 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = managedQuery(mediaSrc,null,null,null,MediaStore.Audio.Media.TITLE);
         String[] nombre = {MediaStore.MediaColumns.TITLE};
         int[] ids = {android.R.id.text1};
-        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1,cursor,nombre,ids);
+        final SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1,cursor,nombre,ids);
         spinner.setAdapter(simpleCursorAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                Cursor cursor = simpleCursorAdapter.getCursor();
+                cursor.moveToPosition(position);
+                String indice = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media._ID));
+                
             }
 
             @Override
@@ -51,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
 
 }

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProyectoMapa02</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoidGhlYWxleGNvZDk5IiwiYSI6ImNrNnJvM2t4aTA3YW8zbG1xMWN1MTFjcDcifQ.mLXzilMJ9bFIWEJ0rv_oHw</string>
+</resources>
